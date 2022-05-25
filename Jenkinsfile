@@ -1,21 +1,36 @@
 //declarative
 pipeline {
-	agent any
-	stages {
-		stage('Build') {
-			steps {
-		         echo "Build"
-			}
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Build"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Test"
+            }
+        }
+        stage('Integration Test') {
+            steps {
+                echo "Integration Test"
+            }
+        }
+
+    } 
+	post {
+		always {
+			echo 'im awesome. I run always'
 		}
-		stage('Test') {
-			steps {
-		         echo "Test"
-			}
+		success {
+			echo 'Im awesome. Im super fast'
 		}
-		stage('ntegration Test') {
-			steps {
-		         echo "Integration Test"
-			}
+		failure {
+			echo 'I run when you are superior fast'
 		}
 	}
+
 }
+
+ 
